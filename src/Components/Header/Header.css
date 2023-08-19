@@ -1,0 +1,31 @@
+.header{
+    /* height: 60px; */
+    width: 100%;
+    padding: 0.8rem 1rem;
+}
+
+.headerLeft{
+    width: 100%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.headerLeft>a{
+    font-weight: 500;
+    color: whitesmoke;
+    height: 2rem;
+    text-decoration: none;
+    padding-right: 2rem;
+    font-size:1.6rem;
+}
+
+.headerLeft>a:hover{
+    color: red;
+ 
+}
+
+.header_icon{
+    height: 100%;
+    object-fit: cover;
+}
