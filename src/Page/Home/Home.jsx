@@ -3,9 +3,9 @@ import "./Home.css"
 import { Link } from 'react-router-dom'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import Movielist from '../../Components/MovieList/Movielist';
 
 function Home() {
-    const imgWidth = "w500";
     const [popularMovies, SetPopularMovies] = useState([])
 
     useEffect(() => {
@@ -24,12 +24,11 @@ function Home() {
                 >
                     {
                         popularMovies.map((movie) => {
-                            console.log(movie)
                             return (
                                 <>
                                 <Link to={`/movie/${movie.id}`} >
                                         <div className="posterImg">
-                                            <img src={`https://image.tmdb.org/t/p/${imgWidth}${movie.backdrop_path}`} />
+                                            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
                                         </div>
                                         <div className="overlay">
                                             <div className="posterimg_overlay">
@@ -56,9 +55,7 @@ function Home() {
                     }
 
                 </Carousel>
-
-                <div className="popular"></div>
-
+                <Movielist/>
             </div>
 
         </>
