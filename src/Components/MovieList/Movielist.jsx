@@ -7,7 +7,7 @@ import Cards from '../Cards/Card'
 const Movielist = () => {
     const [movieList, setMovieList] = useState([])
     const {type} = useParams()
-
+    console.log(type);
     useEffect(() => {
         getData()
     }, [])
@@ -27,7 +27,7 @@ const Movielist = () => {
             <h2 className="list__title">{(type ? type : "POPULAR").toUpperCase()}</h2>
             <div className="list__cards">
                 {
-                    movieList.map(movie => (
+                    movieList.map((movie) => (
                         <Cards movie={movie} />
                     ))
                 }

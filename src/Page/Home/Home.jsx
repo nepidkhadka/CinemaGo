@@ -23,10 +23,10 @@ function Home() {
                     showStatus={false}
                 >
                     {
-                        popularMovies.map((movie) => {
+                        popularMovies.map((movie,pos) => {
                             return (
                                 <>
-                                <Link to={`/movie/${movie.id}`} >
+                                <Link key={pos} to={`/movie/${movie.id}`} >
                                         <div className="posterImg">
                                             <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
                                         </div>
