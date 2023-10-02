@@ -69,18 +69,20 @@ const Movie = () => {
             <div className="movie__heading">Production companies</div>
             <div className="movie__production">
                 {
-                    currentMovieDetail && currentMovieDetail.production_companies && currentMovieDetail.production_companies.map(company => (
-                        <>
+                    currentMovieDetail && currentMovieDetail.production_companies && currentMovieDetail.production_companies.map(company =>(
+                       
+                       <> 
                             {
                                 company.logo_path 
                                 && 
                                 <span className="productionCompanyImage">
                                     <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
-                                    <span>{company.name}</span>
+                                    <span>{ company.name && company.name}</span>
                                 </span>
                             }
                         </>
-                    ))
+                       )
+                    )
                 }
             </div>
         </div>
