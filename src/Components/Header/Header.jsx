@@ -3,7 +3,7 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 
 
-function header() {
+function Header() {
     return (
         <div className='header' >
             <div className='headerLeft' >
@@ -17,4 +17,4 @@ function header() {
     )
 }
 
-export default header
+export default Header
