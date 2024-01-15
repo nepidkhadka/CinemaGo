@@ -26,7 +26,7 @@ function Home() {
                         popularMovies.map((movie,pos) => {
                             return (
                                 <>
-                                <Link key={pos} to={`/movie/${movie.id}`} >
+                                <Link key={movie.id} to={`/movie/${movie.id}`} >
                                         <div className="posterImg">
                                             <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
                                         </div>

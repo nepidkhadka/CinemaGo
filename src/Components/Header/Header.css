@@ -1,7 +1,7 @@
 .header{
     /* height: 60px; */
     width: 100%;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.2rem;
 }
 
 .headerLeft{
@@ -9,23 +9,59 @@
     height: inherit;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.headerLeft>a{
+.headerLeft .logo a{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.headerLeft a{
     font-weight: 500;
     color: whitesmoke;
     height: 2rem;
     text-decoration: none;
-    padding-right: 2rem;
-    font-size:1.6rem;
+    padding-right: 0.6rem;
+    font-size:1.1rem;
 }
 
-.headerLeft>a:hover{
-    color: red;
- 
+.headerLeft .menu{
+    display: none;
 }
 
-.header_icon{
+.headerLeft .go{
+    color: #fbb536;
+}
+
+.headerLeft a:hover{
+    color: #fbb536;
+}
+
+.mblmenu{
+    height: 40px;
+}
+
+.mblmenu img{
     height: 100%;
-    object-fit: cover;
 }
+
+@media (min-width: 766px) {
+
+    .headerLeft .menu{
+        display: block;
+    }
+
+    .mblmenu{
+        display: none;
+    }
+
+    .headerLeft a{
+        font-weight: 500;
+        color: whitesmoke;
+        height: 2rem;
+        text-decoration: none;
+        padding-right: 2rem;
+        font-size:1.6rem;
+    }
+ }
