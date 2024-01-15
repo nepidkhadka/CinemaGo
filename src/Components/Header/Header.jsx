@@ -21,9 +21,13 @@ function Header() {
           <Link to="/movies/upcoming" className="header_icon">
             Upcoming
           </Link>
+          <div className="auth">
+            <Link to="login" className="login"> Login </Link>
+            <Link to="register" className="register"> Register </Link>
+          </div>
         </div>
         <div className="mblmenu">
-            <img src="./public/menu.png" alt="" />
+          <img src="/menu.png" alt="" />
         </div>
       </div>
     </div>

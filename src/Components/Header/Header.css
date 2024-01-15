@@ -22,8 +22,7 @@
     color: whitesmoke;
     height: 2rem;
     text-decoration: none;
-    padding-right: 0.6rem;
-    font-size:1.1rem;
+    font-size:1.4rem;
 }
 
 .headerLeft .menu{
@@ -34,8 +33,32 @@
     color: #fbb536;
 }
 
-.headerLeft a:hover{
+.headerLeft .menu a:hover{
     color: #fbb536;
+}
+
+.login{
+    padding: 0.4rem;
+    border-radius: 0.6rem;
+    border: 1px solid #fbb536;
+    transition: 0.1s ease-in-out;
+}
+
+.auth{
+    padding-inline: 1rem;
+}
+.auth :is(.login, .register):hover{
+    border-radius: 0.8rem;
+    background-color: #fbb536;
+    color: white !important;
+}
+
+.register{
+    border: 1px solid #fbb536;
+    margin-left: 0.4rem;
+    padding: 0.4rem;
+    border-radius: 0.6rem;
+    transition: 0.1s ease-in-out;
 }
 
 .mblmenu{
@@ -49,19 +72,20 @@
 @media (min-width: 766px) {
 
     .headerLeft .menu{
-        display: block;
+        display: flex;
+        align-items: center;
     }
 
     .mblmenu{
         display: none;
     }
 
-    .headerLeft a{
+    .headerLeft>.menu>a{
         font-weight: 500;
         color: whitesmoke;
         height: 2rem;
         text-decoration: none;
-        padding-right: 2rem;
-        font-size:1.6rem;
+        margin-left: 1rem;
+        font-size:1.4rem;
     }
  }

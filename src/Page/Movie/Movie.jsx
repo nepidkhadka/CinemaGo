@@ -33,7 +33,7 @@ const Movie = () => {
                         <div className="movie__name">{currentMovieDetail ? currentMovieDetail.original_title : ""}</div>
                         <div className="movie__tagline">{currentMovieDetail ? currentMovieDetail.tagline : ""}</div>
                         <div className="movie__rating">
-                            {currentMovieDetail ? currentMovieDetail.vote_average: ""} <i class="fas fa-star" />
+                            {currentMovieDetail ? currentMovieDetail.vote_average: ""} <i className="fas fa-star" />
                             <span className="movie__voteCount">{currentMovieDetail ? "(" + currentMovieDetail.vote_count + ") votes" : ""}</span>
                         </div>  
                         <div className="movie__runtime">{currentMovieDetail ? currentMovieDetail.runtime + " mins" : ""}</div>
@@ -43,7 +43,7 @@ const Movie = () => {
                                 currentMovieDetail && currentMovieDetail.genres
                                 ? 
                                 currentMovieDetail.genres.map(genre => (
-                                    <><span className="movie__genre" id={genre.id}>{genre.name}</span></>
+                                    <span key={genre.id} className="movie__genre" id={genre.id}>{genre.name}</span>
                                 )) 
                                 : 
                                 ""
@@ -58,7 +58,7 @@ const Movie = () => {
                 </div>
             </div>
             <div className="movie__links">
-                <div className="movie__heading">Useful Links</div>
+                {/* <div className="movie__heading">Useful Links</div> */}
                 {
                     currentMovieDetail && currentMovieDetail.homepage && <a href={currentMovieDetail.homepage} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__homeButton movie__Button">Homepage <i className="newTab fas fa-external-link-alt"></i></span></p></a>
                 }
