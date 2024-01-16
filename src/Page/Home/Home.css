@@ -21,8 +21,8 @@ a{
 .posterimg_overlay{
     display: flex;
     position: absolute;
-    top: 200px;
-    left: 3rem;
+    top: 40px;
+    left: 1.2rem;
     /* justify-content: flex-start; */
     flex-direction: column;
     gap: 3rem;
@@ -36,7 +36,10 @@ a{
     /* bottom:300px; */
     /* left: 0; */
     text-align: left;
-    color: white;
+    color: #fbb536;
+    -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+    filter: drop-shadow(2px 2px 20px #fbb539);
 }
 
 /* .posterimg_overlay{

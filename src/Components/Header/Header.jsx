@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
 function Header() {
+
+  const [mblmenu, setmblmenu] = useState(false);
+
   return (
     <div className="header">
       <div className="headerLeft">
@@ -11,7 +14,10 @@ function Header() {
             Cinema<span className="go">Go</span>
           </Link>
         </div>
-        <div className="menu">
+        <div onClick={()=>setmblmenu(!mblmenu)} className="mblmenu">
+          <img src="/menu.png" alt="" />
+        </div>
+        <div className={mblmenu?"menu active" :"menu"}>
           <Link to="/movies/popular" className="header_icon">
             Popular
           </Link>
@@ -25,9 +31,6 @@ function Header() {
             <Link to="login" className="login"> Login </Link>
             <Link to="register" className="register"> Register </Link>
           </div>
-        </div>
-        <div className="mblmenu">
-          <img src="/menu.png" alt="" />
         </div>
       </div>
     </div>

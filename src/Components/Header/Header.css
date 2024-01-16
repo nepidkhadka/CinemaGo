@@ -10,11 +10,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
 }
 
 .headerLeft .logo a{
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+.headerLeft .logo a:hover{
+    color: #fbb536;
 }
 
 .headerLeft a{
@@ -26,7 +32,17 @@
 }
 
 .headerLeft .menu{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.headerLeft .menu{
     display: none;
+}
+
+.headerLeft .menu.active{
+    display: flex;
 }
 
 .headerLeft .go{
@@ -44,9 +60,6 @@
     transition: 0.1s ease-in-out;
 }
 
-.auth{
-    padding-inline: 1rem;
-}
 .auth :is(.login, .register):hover{
     border-radius: 0.8rem;
     background-color: #fbb536;
@@ -62,7 +75,7 @@
 }
 
 .mblmenu{
-    height: 40px;
+    height: 35px;
 }
 
 .mblmenu img{
@@ -85,7 +98,7 @@
         color: whitesmoke;
         height: 2rem;
         text-decoration: none;
-        margin-left: 1rem;
+        /* margin-left: 1rem; */
         font-size:1.4rem;
     }
  }
