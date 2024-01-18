@@ -2,6 +2,10 @@
     /* height: 60px; */
     width: 100%;
     padding: 1rem 1.2rem;
+    background: black;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 .headerLeft{
