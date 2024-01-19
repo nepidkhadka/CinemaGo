@@ -1,20 +1,42 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css"
-import { Link } from "react-router-dom";
+import { UserAuth } from "../../Context/AuthContext";
 
 
 const Register = () => {
+
+    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("");
+
+    const {user, signup} = UserAuth()
+    const nav = useNavigate()
+
+    const handleSubmit = async (e)=>{
+        e.preventDefault()
+
+      try{
+        await signup(email, password)
+        alert("Register Success")
+        nav("/")
+      }
+      catch(err){
+        alert(err)
+      }
+    }
+
   return (
     <div>
     <section className="container forms">
           <div className="form login">
               <div className="form-content">
                   <header>Register</header>
-                  <form action="#">
+                  <form onSubmit={handleSubmit}>
                       <div className="field input-field">
-                          <input type="email" placeholder="Email" className="input"/>
+                      <input type="email" value={email} onChange={(e)=>setemail(e.target.value)} placeholder="Email" name="email" className="input"/>
                       </div>
                       <div className="field input-field">
-                          <input type="password" placeholder="Password" className="password"/>
+                      <input type="password" minLength={8} value={password} onChange={(e)=>setpassword(e.target.value)} placeholder="Password" name="password" className="password"/>
                           <i className='bx bx-hide eye-icon'></i>
                       </div>
                       <div className="field button-field">

@@ -30,7 +30,6 @@
 .headerLeft a{
     font-weight: 500;
     color: whitesmoke;
-    height: 2rem;
     text-decoration: none;
     font-size:1.4rem;
 }
@@ -76,6 +75,23 @@
     padding: 0.4rem;
     border-radius: 0.6rem;
     transition: 0.1s ease-in-out;
+}
+
+.logout{
+    cursor: pointer;
+    border-radius: 0.4rem;
+    margin-left: 0.5rem;
+    background-color: #fbb536;
+    border: none;
+    padding: 0.4rem;
+    font-size: 1.4rem;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+.logout:hover{
+    opacity: 0.9;
+    
 }
 
 .mblmenu{

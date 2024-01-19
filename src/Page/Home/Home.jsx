@@ -28,13 +28,13 @@ function Home() {
           {popularMovies.map((movie, pos) => {
             return (
               <>
-                <Link key={pos} to={`/movie/${movie.id}`}>
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
                   <div className="posterImg">
                     <img
                       src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                     />
                   </div>
-                  <div className="overlay">
+                  <div key={movie.id} className="overlay">
                     <div className="posterimg_overlay">
                       <div className="title">
                         {movie ? movie.original_title : ""}
