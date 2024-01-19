@@ -47,7 +47,7 @@ function Header() {
 
           {/* Auth Menu */}
           {
-            user? 
+            user && user.email? 
             (
               <div className="auth">
                 <Link to="profile">

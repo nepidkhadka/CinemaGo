@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div>
-      <section className="container forms">
+      <div className="container">
             <div className="form login">
                 <div className="form-content">
                     <header>Login</header>
@@ -63,7 +63,7 @@ const Login = () => {
                     </a>
                 </div> */}
             </div>
-            </section>
+            </div>
     </div>
   );
 };

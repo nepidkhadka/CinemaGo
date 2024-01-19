@@ -22,19 +22,14 @@ a{
     display: flex;
     position: absolute;
     top: 40px;
-    left: 1.2rem;
-    /* justify-content: flex-start; */
+    padding-inline: 0.6rem;
     flex-direction: column;
     gap: 3rem;
 }
 
 .title{
-    /* padding: 0.4rem 2rem; */
     font-weight: 700;
-    font-size: 4rem;
-    /* position: absolute; */
-    /* bottom:300px; */
-    /* left: 0; */
+    font-size: 2.5rem;
     text-align: left;
     color: #fbb536;
     -webkit-text-stroke-width: 2px;
@@ -42,16 +37,9 @@ a{
     filter: drop-shadow(2px 2px 20px #fbb539);
 }
 
-/* .posterimg_overlay{
-    position: relative;
-} */
 .runtime{
-    /* position: absolute; */
-    /* bottom: 250px; */
-    /* left: 0; */
-    /* padding: 0.4rem 2rem; */
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: left;
     margin-right: 2rem;
 }
@@ -63,12 +51,8 @@ a{
 
 .desc{
     max-width: 600px;
-    /* position: absolute; */
-    /* bottom: 115px; */
-    /* left: 0; */
-    /* padding: 0.4rem 2rem; */
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: left;
     font-style: italic;
 }
@@ -84,3 +68,29 @@ a{
     height: 100%;
     object-fit: cover;
 }
+
+
+@media (min-width: 766px) {
+
+    .title{
+        font-size: 4rem;
+    }
+    
+    
+    .runtime{
+        font-size: 2rem;
+    }
+
+    
+    .desc{
+        font-size: 1rem;
+    }
+
+    .posterimg_overlay{
+       
+        left: 1.5rem;
+        
+    }
+    
+    
+ }

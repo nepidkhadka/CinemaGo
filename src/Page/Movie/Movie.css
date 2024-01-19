@@ -92,13 +92,14 @@
 }
 
 .movie__links {
-  position: relative;
+  /* position: relative; */
   bottom: 100px;
   display: flex;
   gap: 2rem;
   justify-content: space-between;
   width: 75%;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .movie__heading {

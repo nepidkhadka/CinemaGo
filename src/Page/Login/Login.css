@@ -5,7 +5,9 @@
     align-items: center;
     justify-content: center;
     column-gap: 30px;
+    padding: 2rem;
 }
+
 .form{
     position: absolute;
     max-width: 430px;
