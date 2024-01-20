@@ -1,27 +1,29 @@
 import React, {useEffect, useState} from "react"
 import "./Movie.css"
 import { useParams } from "react-router-dom"
-import { arrayUnion, doc, updateDoc } from "firebase/firestore"
+import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore"
 import { db } from "../../Services/firebase"
 import { UserAuth } from "../../Context/AuthContext"
 
 const Movie = () => {
+    // Use State for Current Fetch Movie, ID, Current Logged In User Data From FireStore
     const [currentMovieDetail, setCurrentMovieDetail] = useState([])
     const { id } = useParams()
-
     const [favourite, setfavourite] = useState(false);
-
+    const [userdata, setuserdata] = useState([]);
     const {user} = UserAuth()
 
+    // Fetching Movie Data From ID
     const getData = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
         .then(res => res.json())
         .then(data => setCurrentMovieDetail(data))
+        .catch(err=>alert(err))
     }
 
+    // Add to Favourite Function
     const addFavourite = async () =>{
         const userEmail = user?.email
-
         if(userEmail){
             const userDocs = doc(db, "users", userEmail)
             setfavourite(!favourite);
@@ -34,13 +36,46 @@ const Movie = () => {
             alert("Please Login To Add Favourite Movies")
         }
     }
+    
+    // Remove to Favourite Function
+    const removeFavourite = async (id) =>{
+        
+        const updateduserdata = userdata.filter((movie)=>movie.id != id) 
+        setuserdata(updateduserdata);
 
+        const userEmail = user?.email
+
+        if(userEmail){
+            const userDocs = doc(db, "users", userEmail)
+            setfavourite(!favourite);
+
+            await updateDoc(userDocs,{
+                favourite : updateduserdata,
+            })
+        }
+        else{
+            alert("Please Login To Remove Favourite Movies")
+        }
+    }
+
+    // UseEffect For Fetching Movie Data
     useEffect(() => {
         getData()
         window.scrollTo(0,0)
-    }, [])
+    }, [id])
 
-    if(currentMovieDetail=="")
+    // Use Effect For Fetching Currrent Logged In User Data
+    useEffect(() => {
+        if (user) {
+          onSnapshot(doc(db, "users", `${user.email}`), (doc) => {
+            if (doc.data()) setuserdata(doc.data().favourite);
+          });
+        }
+      }, [user?.email]);
+
+
+    //   PreLoader
+    if(currentMovieDetail =="")
     return(
         <div className="preloader">
             <div className="loader"></div>
@@ -80,7 +115,8 @@ const Movie = () => {
                             }
                         </div>
                         <div className="fav">
-                            <button onClick={addFavourite} id="favbtn" >Add Favourite</button>
+                            {!userdata.find(user=>user.id==id) && (<button onClick={addFavourite} id="favbtn" >Add Favourite</button>)}
+                            {userdata.find(user=>user.id==id) && (<button onClick={()=>removeFavourite(id)} id="favbtn" >Remove Favourite</button>)}
                         </div>
                     </div>
                     <div className="movie__detailRightBottom">
@@ -105,9 +141,7 @@ const Movie = () => {
                     currentMovieDetail && currentMovieDetail.production_companies && currentMovieDetail.production_companies.map(company =>(
                        
                        <> 
-                            {
-                                company.logo_path 
-                                && 
+                            { company.logo_path  && 
                                 <span key={company.name} className="productionCompanyImage">
                                     <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
                                     <span>{ company.name && company.name}</span>

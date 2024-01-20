@@ -15,7 +15,6 @@ const Profile = () => {
         if (doc.data()) setfavouriteMovie(doc.data().favourite);
       });
     }
-    console.log(favouriteMovie);
   }, [user?.email]);
 
   return (
