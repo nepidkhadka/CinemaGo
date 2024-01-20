@@ -7,7 +7,7 @@ import Header from "./Components/Header/Header";
 import Login from "./Page/Login/Login";
 import Register from "./Page/Register/Register";
 import Profile from "./Page/Profile/Profile";
-import ProtectedRoutes from "./Components/ProtectedRoutes";
+import ProtectedRoutes from "./Components/Routes/ProtectedRoutes";
 import { AuthContextProvider } from "./Context/AuthContext";
 
 function App() {

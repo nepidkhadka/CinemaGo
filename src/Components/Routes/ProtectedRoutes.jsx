@@ -1,26 +1,25 @@
 import { Link } from "react-router-dom";
-import { UserAuth } from "../Context/AuthContext";
+import { UserAuth } from "../../Context/AuthContext";
+import "./ProtectedRoutes.css"
 
 const ProtectedRoutes = ({ children }) => {
   const { user } = UserAuth();
 
+  if(user=="")
+  return(
+    <div className="preloader">
+      <div className="loader"></div>
+    </div>
+    )
+
   return user && user.email ? (
     <>{children}</>
   ) : (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height:"20rem",
-        gap: "2rem",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="error">
       <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
         Not Logged In
       </p>
-      <Link style={{ fontSize: "1.5rem", fontWeight: "bold", color:"#fbb536" }} to="/login">
+      <Link className="login" to="/login">
         Login Here
       </Link>
     </div>

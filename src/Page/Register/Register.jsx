@@ -9,11 +9,11 @@ const Register = () => {
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
 
-    const {user, signup} = UserAuth()
+    const {signup} = UserAuth()
     const nav = useNavigate()
 
     const handleSubmit = async (e)=>{
-        e.preventDefault()
+      e.preventDefault()
 
       try{
         await signup(email, password)

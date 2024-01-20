@@ -1,21 +1,51 @@
 import React, {useEffect, useState} from "react"
 import "./Movie.css"
 import { useParams } from "react-router-dom"
+import { arrayUnion, doc, updateDoc } from "firebase/firestore"
+import { db } from "../../Services/firebase"
+import { UserAuth } from "../../Context/AuthContext"
 
 const Movie = () => {
-    const [currentMovieDetail, setCurrentMovieDetail] = useState()
+    const [currentMovieDetail, setCurrentMovieDetail] = useState([])
     const { id } = useParams()
 
-    useEffect(() => {
-        getData()
-        window.scrollTo(0,0)
-    }, [])
+    const [favourite, setfavourite] = useState(false);
+
+    const {user} = UserAuth()
 
     const getData = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
         .then(res => res.json())
         .then(data => setCurrentMovieDetail(data))
     }
+
+    const addFavourite = async () =>{
+        const userEmail = user?.email
+
+        if(userEmail){
+            const userDocs = doc(db, "users", userEmail)
+            setfavourite(!favourite);
+
+            await updateDoc(userDocs,{
+                favourite : arrayUnion({...currentMovieDetail})
+            })
+        }
+        else{
+            alert("Please Login To Add Favourite Movies")
+        }
+    }
+
+    useEffect(() => {
+        getData()
+        window.scrollTo(0,0)
+    }, [])
+
+    if(currentMovieDetail=="")
+    return(
+        <div className="preloader">
+            <div className="loader"></div>
+        </div>
+    )
 
     return (
         <div className="movie">
@@ -30,7 +60,7 @@ const Movie = () => {
                 </div>
                 <div className="movie__detailRight">
                     <div className="movie__detailRightTop">
-                        <div className="movie__name">{currentMovieDetail ? currentMovieDetail.original_title : ""}</div>
+                        <div className="movie__name">{currentMovieDetail ? currentMovieDetail.original_title : ""}favourite</div>
                         <div className="movie__tagline">{currentMovieDetail ? currentMovieDetail.tagline : ""}</div>
                         <div className="movie__rating">
                             {currentMovieDetail ? currentMovieDetail.vote_average: ""} <i className="fas fa-star" />
@@ -48,6 +78,9 @@ const Movie = () => {
                                 : 
                                 ""
                             }
+                        </div>
+                        <div className="fav">
+                            <button onClick={addFavourite} id="favbtn" >Add Favourite</button>
                         </div>
                     </div>
                     <div className="movie__detailRightBottom">

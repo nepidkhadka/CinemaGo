@@ -16,7 +16,6 @@ const Login = () => {
 
       try{
         await login(email, password)
-        alert("Login Success")
         nav("/")
       }
       catch(err){
