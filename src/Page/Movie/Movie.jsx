@@ -95,7 +95,7 @@ const Movie = () => {
                 </div>
                 <div className="movie__detailRight">
                     <div className="movie__detailRightTop">
-                        <div className="movie__name">{currentMovieDetail ? currentMovieDetail.original_title : ""}favourite</div>
+                        <div className="movie__name">{currentMovieDetail ? currentMovieDetail.original_title : ""}</div>
                         <div className="movie__tagline">{currentMovieDetail ? currentMovieDetail.tagline : ""}</div>
                         <div className="movie__rating">
                             {currentMovieDetail ? currentMovieDetail.vote_average: ""} <i className="fas fa-star" />
