@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../Context/AuthContext";
+import toast from "react-hot-toast";
 
 function Header() {
   const [mblmenu, setmblmenu] = useState(false);
@@ -11,9 +12,11 @@ function Header() {
   const handleLogout = async () =>{
     try{
       await logout()
+      toast.success('Logout Successfully!')
       nav("/")
     }
     catch(err){
+      toast.error('Logout Error:' +err.message)
       alert(err.message)
     }
   }

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom"
 import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore"
 import { db } from "../../Services/firebase"
 import { UserAuth } from "../../Context/AuthContext"
+import toast from "react-hot-toast";
+
 
 const Movie = () => {
     // Use State for Current Fetch Movie, ID, Current Logged In User Data From FireStore
@@ -12,6 +14,7 @@ const Movie = () => {
     const [favourite, setfavourite] = useState(false);
     const [userdata, setuserdata] = useState([]);
     const {user} = UserAuth()
+    
 
     // Fetching Movie Data From ID
     const getData = () => {
@@ -27,13 +30,14 @@ const Movie = () => {
         if(userEmail){
             const userDocs = doc(db, "users", userEmail)
             setfavourite(!favourite);
-
             await updateDoc(userDocs,{
                 favourite : arrayUnion({...currentMovieDetail})
             })
+            toast.success('Favourite Added')
         }
         else{
-            alert("Please Login To Add Favourite Movies")
+            toast.error("Please Login To Add Favourite Movies")
+            // alert("Please Login To Add Favourite Movies")
         }
     }
     
@@ -52,6 +56,7 @@ const Movie = () => {
             await updateDoc(userDocs,{
                 favourite : updateduserdata,
             })
+            toast.success('Favourite Removed')
         }
         else{
             alert("Please Login To Remove Favourite Movies")
