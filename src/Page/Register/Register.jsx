@@ -10,19 +10,10 @@ const Register = () => {
     const [password, setpassword] = useState("");
 
     const {signup} = UserAuth()
-    const nav = useNavigate()
 
     const handleSubmit = async (e)=>{
       e.preventDefault()
-
-      try{
-        await signup(email, password)
-        alert("Register Success")
-        nav("/")
-      }
-      catch(err){
-        alert(err)
-      }
+      await signup(email, password)
     }
 
   return (

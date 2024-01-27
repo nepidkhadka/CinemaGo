@@ -9,6 +9,7 @@ import Register from "./Page/Register/Register";
 import Profile from "./Page/Profile/Profile";
 import ProtectedRoutes from "./Components/Routes/ProtectedRoutes";
 import { AuthContextProvider } from "./Context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         />
         <Route path="/*" element={<h1>404 ! Not Found</h1>} />
       </Routes>
+      <Toaster position="bottom-right" />
     </AuthContextProvider>
   );
 }
